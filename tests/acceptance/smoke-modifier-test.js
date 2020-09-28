@@ -9,7 +9,7 @@ module('Acceptance | smoke modifier', function(hooks) {
   setupApplicationTest(hooks);
 
   test('reordering with mouse events', async function(assert) {
-    await visit('/modifier');
+    await visit('/');
 
     // when a handle is present, the element itself shall not be draggable
     assert.equal(verticalContents(), 'Uno Dos Tres Cuatro Cinco');
@@ -105,7 +105,7 @@ module('Acceptance | smoke modifier', function(hooks) {
   });
 
   test('Test isAnimated still works without css for transitionDuration', async function(assert) {
-    await visit('/modifier');
+    await visit('/');
 
     assert.equal(verticalContents(), 'Uno Dos Tres Cuatro Cinco');
     assert.equal(horizontalContents(), 'Uno Dos Tres Cuatro Cinco');
@@ -126,7 +126,7 @@ module('Acceptance | smoke modifier', function(hooks) {
   });
 
   test('reordering with touch events', async function(assert) {
-    await visit('/modifier');
+    await visit('/');
 
     assert.equal(verticalContents(), 'Uno Dos Tres Cuatro Cinco');
     assert.equal(horizontalContents(), 'Uno Dos Tres Cuatro Cinco');
@@ -200,7 +200,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('A11yAudit', async function(assert) {
       assert.expect(1);
 
-      await visit("/modifier");
+      await visit("/");
       await a11yAudit();
       assert.ok(true, 'no a11y errors found!');
     });
@@ -208,7 +208,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection shows UP and DOWN visual indicators on vertical sort', async function(assert) {
       assert.expect(8);
 
-      await visit("/modifier");
+      await visit("/");
 
       const handle = find('[data-test-vertical-demo-handle]');
       await focus(handle);
@@ -238,7 +238,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection shows LEFT and RIGHT visual indicators on horizontal sort', async function(assert) {
       assert.expect(8);
 
-      await visit("/modifier");
+      await visit("/");
 
       const handle = find('[data-test-horizontal-demo-handle]');
       await focus(handle);
@@ -268,7 +268,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection is activated on ENTER', async function(assert) {
       assert.expect(3);
 
-      await visit("/modifier");
+      await visit("/");
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
         '[data-test-vertical-demo-handle]',
@@ -288,7 +288,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection is activated on SPACE', async function(assert) {
       assert.expect(3);
 
-      await visit("/modifier");
+      await visit("/");
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
         '[data-test-vertical-demo-handle]',
@@ -307,7 +307,7 @@ module('Acceptance | smoke modifier', function(hooks) {
 
     test('Keyboard selection is cancelled on ESC', async function(assert) {
       assert.expect(3);
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -333,7 +333,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection is cancelled on losing focus', async function(assert) {
       assert.expect(3);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -356,7 +356,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection moves down on DOWN and is cancelled on ESC', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -387,7 +387,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection moves down on DOWN and is cancelled on losing focus', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -415,7 +415,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection is confirmed on ENTER', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -446,7 +446,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection moves up on UP and is confirmed on SPACE', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -487,7 +487,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection moves down on DOWN and is confirmed on SPACE', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-vertical-demo-handle]');
       await triggerKeyEvent(
@@ -518,7 +518,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection moves right on RIGHT and is confirmed on ENTER', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-horizontal-demo-handle]');
       await triggerKeyEvent(
@@ -549,7 +549,7 @@ module('Acceptance | smoke modifier', function(hooks) {
     test('Keyboard selection moves left on LEFT and is confirmed on ENTER', async function(assert) {
       assert.expect(5);
 
-      await visit("/modifier");
+      await visit("/");
 
       await focus('[data-test-horizontal-demo-handle]');
       await triggerKeyEvent(
