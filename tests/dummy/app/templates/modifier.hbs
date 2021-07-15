@@ -3,6 +3,14 @@
     <h2>Ember Sortable</h2>
   </header>
 
+  {{#link-to "index"}}
+    Components
+  {{/link-to}}
+  |
+  {{#link-to "modifier"}}
+    Modifiers
+  {{/link-to}}
+
   <main>
     <section class="vertical-demo">
       <h3>Vertical</h3>
@@ -163,5 +171,63 @@
       {{/each}}
     </ol>
 
+  </section>
+</article>
+
+<article class="demo">
+  <section class="vertical-demo">
+    <h3>Disabled (group)</h3>
+
+    <div>
+      <button {{on "click" this.toggleDisabled}}>
+        Disabled: {{this.disabled}}
+      </button>
+    </div>
+
+    <ol
+      {{sortable-group
+        disabled=this.disabled
+        groupName="disabled"
+        onChange=this.update
+      }}
+    >
+      {{#each model.items as |item|}}
+        <li {{sortable-item model=item groupName="disabled"}}>
+          {{item}}
+          {{#unless this.disabled}}
+            <span class="handle" {{sortable-handle}} data-item={{item}}>
+              <span>&vArr;</span>
+            </span>
+          {{/unless}}
+        </li>
+      {{/each}}
+    </ol>
+  </section>
+
+  <section class="vertical-demo">
+    <h3>Vertical (disabled items)</h3>
+
+    <ol data-test-vertical-disabled-item-demo-group
+      {{sortable-group
+        onChange=this.update
+        a11yAnnouncementConfig=this.a11yAnnouncementConfig
+        a11yItemName="spanish number"
+        itemVisualClass=this.itemVisualClass
+        handleVisualClass=this.handleVisualClass
+        groupName="vertical-disabled-item"
+      }}
+    >
+      {{#each model.items as |item|}}
+        <li data-test-vertical-disabled-item-demo-item {{sortable-item model=item groupName="vertical-disabled-item" disabled=(eq item "Dos")}}>
+          {{item}}
+          {{#if (eq item "Dos")}}
+            (disabled)
+          {{/if}}
+          <span class="handle" data-test-vertical-disabled-item-demo-handle {{sortable-handle}} data-item={{item}}>
+            <span>&vArr;</span>
+          </span>
+        </li>
+      {{/each}}
+    </ol>
   </section>
 </article>
